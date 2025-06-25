@@ -3,92 +3,139 @@
 *,
 ::after,
 ::before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
-    display: flex;
+  display: flex;
+  height: 100vh;
 }
 
+/* SIDEBAR */
 #sidebar {
     display: flex;
-    flex-direction: column;
+    position: relative;
     background-color: #0e2238;
-}
-
-.main {
+    transition: width 0.3s ease-in-out;
     min-height: 100vh;
-    width: 100%;
     overflow: hidden;
-    transition: all 0.35s ease-in-out;
-    background: #fafbfe;
+    width: 85px;
 }
 
+/* Checkbox hidden */
 #toggler {
-    display: none;
+  display: none;
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 85px;
+  transition: width 0.3s ease-in-out;
+}
+
+/* When toggled (checked), expand the sidebar */
+#toggler:checked ~ .sidebar-inner {
+  width: 260px;
 }
 
 .toggle-btn {
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #FFF;
-    padding: 1rem 1.5rem;
-    width: max-content;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #FFF;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
 }
 
+.toggle-btn span {
+  margin-left: 0.5rem;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.search-icon {
+  color: white;
+  margin-right: 0.5rem;
+}
+
+.search-query {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Sidebar Navigation */
 .sidebar-nav {
-    width: 85px;
-    min-width: 85px;
-    z-index: 1000;
-    padding: 25px 0;
-    flex: 1 1 auto;
-    transition: all .25s ease-in-out;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
-#sidebar input[type="checkbox"]:not(:checked)~* .sidebar-link span {
-    display: none;
-}
-
-#sidebar input[type="checkbox"]:checked~.sidebar-nav {
-    width: 260px;
-    min-width: 260px;
-}
-
-a.sidebar-link {
-    padding: .625rem 1.625rem;
-    color: #FFF;
-    display: block;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    border-left: 3px solid transparent;
+.sidebar-link {
+  padding: 0.625rem 1.625rem;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  border-left: 3px solid transparent;
+  transition: background 0.2s ease;
 }
 
 .sidebar-link i {
-    font-size: 1.1rem;
-    margin-right: .75rem;
+  font-size: 1.1rem;
+  margin-right: 0.75rem;
 }
 
-a.sidebar-link:hover {
-    background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid #3b7ddd;
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.075);
+  border-left: 3px solid #3b7ddd;
+}
+
+/* Hide labels when collapsed */
+#toggler:not(:checked) ~ .sidebar-inner .sidebar-link span,
+#toggler:not(:checked) ~ .sidebar-inner .toggle-btn span,
+#toggler:not(:checked) ~ .sidebar-inner .search-bar {
+  display: none;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 1rem 1.5rem;
+}
+
+/* MAIN */
+.main {
+  flex-grow: 1;
+  background: #fafbfe;
+  transition: all 0.35s ease-in-out;
 }
 
 .content {
-    text-align: center;
+  text-align: center;
+  padding: 2rem;
 }
