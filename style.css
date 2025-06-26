@@ -32,7 +32,7 @@ body {
     background-color: #0e2238;
     transition: width 0.3s ease-in-out;
     min-height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 85px;
 }
 
@@ -45,12 +45,11 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 85px;
   transition: width 0.3s ease-in-out;
 }
 
 /* When toggled (checked), expand the sidebar */
-#toggler:checked ~ .sidebar-inner {
+#toggler:checked ~ .sidebar{
   width: 260px;
 }
 
@@ -121,6 +120,7 @@ body {
 #toggler:not(:checked) ~ .sidebar-inner .toggle-btn span,
 #toggler:not(:checked) ~ .sidebar-inner .search-bar {
   display: none;
+  width: 85px;
 }
 
 /* Sidebar Footer */
